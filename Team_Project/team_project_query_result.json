@@ -1,0 +1,186 @@
+[
+  {
+    "routeId": "1_100264",
+    "tripId": "1_664213779",
+    "scheduledArrival_ms": 1772402400000,
+    "predictedArrival_ms": 1772402355000,
+    "delay_min": -0.75,
+    "query_time": "2026-03-01 14:00:00"
+  },
+  {
+    "routeId": "1_100214",
+    "tripId": "1_537767649",
+    "scheduledArrival_ms": 1772402100000,
+    "predictedArrival_ms": 1772402434000,
+    "delay_min": 5.566666666666666,
+    "query_time": "2026-03-01 14:00:00"
+  },
+  {
+    "routeId": "1_100447",
+    "tripId": "1_650207969",
+    "scheduledArrival_ms": 1772402280000,
+    "predictedArrival_ms": 1772402574000,
+    "delay_min": 4.9,
+    "query_time": "2026-03-01 14:00:00"
+  },
+  {
+    "routeId": "1_100224",
+    "tripId": "1_629475739",
+    "scheduledArrival_ms": 1772402700000,
+    "predictedArrival_ms": 1772403122000,
+    "delay_min": 7.033333333333333,
+    "query_time": "2026-03-01 14:00:00"
+  },
+  {
+    "routeId": "1_100193",
+    "tripId": "1_535594449",
+    "scheduledArrival_ms": 1772402640000,
+    "predictedArrival_ms": 1772403204000,
+    "delay_min": 9.4,
+    "query_time": "2026-03-01 14:00:00"
+  },
+  {
+    "routeId": "1_100264",
+    "tripId": "1_664213689",
+    "scheduledArrival_ms": 1772403300000,
+    "predictedArrival_ms": 1772403300000,
+    "delay_min": 0.0,
+    "query_time": "2026-03-01 14:00:00"
+  },
+  {
+    "routeId": "1_100447",
+    "tripId": "1_650207979",
+    "scheduledArrival_ms": 1772403480000,
+    "predictedArrival_ms": 1772403480000,
+    "delay_min": 0.0,
+    "query_time": "2026-03-01 14:00:00"
+  },
+  {
+    "routeId": "1_100214",
+    "tripId": "1_548656509",
+    "scheduledArrival_ms": 1772403000000,
+    "predictedArrival_ms": 1772403515000,
+    "delay_min": 8.583333333333334,
+    "query_time": "2026-03-01 14:00:00"
+  },
+  {
+    "routeId": "1_100224",
+    "tripId": "1_629475749",
+    "scheduledArrival_ms": 1772403420000,
+    "predictedArrival_ms": 1772403663000,
+    "delay_min": 4.05,
+    "query_time": "2026-03-01 14:00:00"
+  },
+  {
+    "routeId": "1_100184",
+    "tripId": "1_535593599",
+    "scheduledArrival_ms": 1772403480000,
+    "predictedArrival_ms": 1772403675000,
+    "delay_min": 3.25,
+    "query_time": "2026-03-01 14:00:00"
+  },
+  {
+    "routeId": "1_100214",
+    "tripId": "1_537767389",
+    "scheduledArrival_ms": 1772403900000,
+    "predictedArrival_ms": 1772404151000,
+    "delay_min": 4.183333333333334,
+    "query_time": "2026-03-01 14:00:00"
+  },
+  {
+    "routeId": "1_100224",
+    "tripId": "1_633999769",
+    "scheduledArrival_ms": 1772404140000,
+    "predictedArrival_ms": 1772404183000,
+    "delay_min": 0.7166666666666667,
+    "query_time": "2026-03-01 14:00:00"
+  },
+  {
+    "routeId": "1_100264",
+    "tripId": "1_664213589",
+    "scheduledArrival_ms": 1772404200000,
+    "predictedArrival_ms": 1772404200000,
+    "delay_min": 0.0,
+    "query_time": "2026-03-01 14:00:00"
+  },
+  {
+    "routeId": "1_100193",
+    "tripId": "1_535594109",
+    "scheduledArrival_ms": 1772404440000,
+    "predictedArrival_ms": 1772404507000,
+    "delay_min": 1.1166666666666667,
+    "query_time": "2026-03-01 14:00:00"
+  },
+  {
+    "routeId": "1_100447",
+    "tripId": "1_650207989",
+    "scheduledArrival_ms": 1772404680000,
+    "predictedArrival_ms": 1772404680000,
+    "delay_min": 0.0,
+    "query_time": "2026-03-01 14:00:00"
+  },
+  {
+    "routeId": "1_100214",
+    "tripId": "1_548656549",
+    "scheduledArrival_ms": 1772404800000,
+    "predictedArrival_ms": 1772404800000,
+    "delay_min": 0.0,
+    "query_time": "2026-03-01 14:00:00"
+  },
+  {
+    "routeId": "1_100224",
+    "tripId": "1_633999789",
+    "scheduledArrival_ms": 1772404860000,
+    "predictedArrival_ms": 1772404860000,
+    "delay_min": 0.0,
+    "query_time": "2026-03-01 14:00:00"
+  },
+  {
+    "routeId": "1_100264",
+    "tripId": "1_664213579",
+    "scheduledArrival_ms": 1772405100000,
+    "predictedArrival_ms": 1772405100000,
+    "delay_min": 0.0,
+    "query_time": "2026-03-01 14:00:00"
+  },
+  {
+    "routeId": "1_100184",
+    "tripId": "1_535593669",
+    "scheduledArrival_ms": 1772405280000,
+    "predictedArrival_ms": 1772405280000,
+    "delay_min": 0.0,
+    "query_time": "2026-03-01 14:00:00"
+  },
+  {
+    "routeId": "1_100224",
+    "tripId": "1_629475759",
+    "scheduledArrival_ms": 1772405580000,
+    "predictedArrival_ms": 1772405580000,
+    "delay_min": 0.0,
+    "query_time": "2026-03-01 14:00:00"
+  },
+  {
+    "routeId": "1_100214",
+    "tripId": "1_537767689",
+    "scheduledArrival_ms": 1772405700000,
+    "predictedArrival_ms": 1772405700000,
+    "delay_min": 0.0,
+    "query_time": "2026-03-01 14:00:00"
+  },
+  {
+    "routeId": "1_100447",
+    "tripId": "1_650207999",
+    "scheduledArrival_ms": 1772405880000,
+    "predictedArrival_ms": 1772405880000,
+    "delay_min": 0.0,
+    "query_time": "2026-03-01 14:00:00"
+  },
+  {
+    "routeId": "1_100264",
+    "tripId": "1_664213509",
+    "scheduledArrival_ms": 1772406000000,
+    "predictedArrival_ms": 1772406000000,
+    "delay_min": 0.0,
+    "query_time": "2026-03-01 14:00:00"
+  }
+]
