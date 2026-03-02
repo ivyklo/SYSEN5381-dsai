@@ -1,0 +1,59 @@
+---
+description: README structure and formatting guidelines
+alwaysApply: true
+---
+
+# README Formatting
+
+Use this structure for README files, in this order, and include a relevant icon next to each section header:
+
+1) **Project Name**
+- Start with a clear H1 title that is the project name.
+- Follow with a 1-2 sentence description of what the project does.
+
+2) **Data**
+- Describe where the data comes from.
+- Explain what the data is about.
+
+3) **Quick Start**
+- Provide minimal steps to run the project.
+- Include required packages and how to install them.
+- Include the command(s) to execute the project.
+
+4) **Features and Technology**
+- List key features.
+- List the main technologies used.
+
+5) **Configuration**
+- Document required environment variables or config files.
+- Show default values and where to set them.
+
+6) **API Reference**
+- Include endpoints or public functions/classes.
+- Provide example requests/responses or usage snippets.
+
+Style:
+- Use a light theme for any screenshots or UI images.
+
+Template:
+
+# <Project Name>
+<1-2 sentence description of what the project does.>
+
+## 📊 Data
+<Source of data.>
+<What the data is about.>
+
+## ⚡ Quick Start
+<Install steps and required packages.>
+<Run command(s).>
+
+## ✨ Features and Technology
+- Features: <feature 1>, <feature 2>, ...
+- Technology: <tech 1>, <tech 2>, ...
+
+## ⚙️ Configuration
+<Env vars or config file details, defaults, and where to set them.>
+
+## 🔌 API Reference
+<Endpoints or public API usage with examples.>
