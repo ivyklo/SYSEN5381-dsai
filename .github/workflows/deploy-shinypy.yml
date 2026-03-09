@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
     paths:
-      - '04_deployment/positconnect/shinypy/**'
+      - '05_hackathon/congestion_tracker/dashboard/**'
       - '.github/workflows/deploy-shinypy.yml'
   workflow_dispatch:
 
@@ -18,7 +18,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.12'
+          python-version: '3.14.2'
 
       - name: Publish to Posit Connect
         uses: rstudio/actions/connect-publish@main
@@ -26,5 +26,9 @@ jobs:
           url: ${{ secrets.CONNECT_SERVER }}
           api-key: ${{ secrets.CONNECT_API_KEY }}
           access-type: acl
-          dir: 04_deployment/positconnect/shinypy
+          dir: 05_hackathon/congestion_tracker/dashboard
           force: false
+          manifest: manifestme.sh
+          manifest-path: dashboard/manifestme.sh
+          manifest-args: --app-mode python-shiny --entrypoint app
+          manifest-args: --app-mode python-shiny --entrypoint app
