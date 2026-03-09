@@ -26,6 +26,36 @@ jobs:
           python -m pip install rsconnect-python
           rsconnect write-manifest api --entrypoint fastapi_app:app 05_hackathon/congestion_tracker/api
 
+      - name: Pin manifest Python to 3.14.2
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path("05_hackathon/congestion_tracker/api/manifest.json")
+          if not p.exists():
+              raise SystemExit("manifest.json not found after write-manifest")
+          d = json.loads(p.read_text(encoding="utf-8"))
+          d.setdefault("python", {}).setdefault("version", "3.14.2")
+          d["python"]["version"] = "3.14.2"
+          p.write_text(json.dumps(d, indent=2) + "\n", encoding="utf-8")
+          print("Pinned manifest python.version to", d["python"]["version"])
+          print("metadata.appmode:", d.get("metadata", {}).get("appmode"))
+          print("metadata.entrypoint:", d.get("metadata", {}).get("entrypoint"))
+          PY
+
+      - name: "Debug: show API dir + manifest"
+        run: |
+          ls -la 05_hackathon/congestion_tracker/api
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path("05_hackathon/congestion_tracker/api/manifest.json")
+          d = json.loads(p.read_text(encoding="utf-8"))
+          print("manifest python.version:", d.get("python", {}).get("version"))
+          pm = d.get("python", {}).get("package_manager", {})
+          print("manifest package_manager:", pm.get("name"), pm.get("version"), pm.get("package_file"))
+          PY
+
       - name: Publish to Posit Connect
         uses: rstudio/actions/connect-publish@main
         env:
