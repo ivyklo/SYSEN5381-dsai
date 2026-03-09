@@ -1,0 +1,8 @@
+location_id,name,zone
+downtown_1,Main & 5th,downtown
+downtown_2,Center & State,downtown
+highway_e,Highway 9 East,highway
+highway_w,Highway 9 West,highway
+bridge_n,North Bridge,bridge
+bridge_s,South Bridge,bridge
+airport_rd,Airport Rd,transit
