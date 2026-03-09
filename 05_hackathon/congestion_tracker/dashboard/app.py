@@ -17,7 +17,7 @@ if __name__ == "__main__":
     # On platforms like DigitalOcean, use the PORT env var and 0.0.0.0.
     from shiny import run_app
 
-    port = int(os.getenv("PORT", "8002"))
+    port = int(os.getenv("PORT", "8080"))
     host = os.getenv("HOST", "0.0.0.0")
     run_app(app, host=host, port=port)
 
