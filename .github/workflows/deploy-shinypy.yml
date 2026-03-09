@@ -25,6 +25,24 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install rsconnect-python
           rsconnect write-manifest shiny 05_hackathon/congestion_tracker/dashboard
+      
+      - name: Debug: show manifest + directory
+        run: |
+          python --version
+          ls -la 05_hackathon/congestion_tracker/dashboard
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path("05_hackathon/congestion_tracker/dashboard/manifest.json")
+          print("manifest.json exists:", p.exists())
+          if p.exists():
+              d = json.loads(p.read_text(encoding="utf-8"))
+              print("manifest metadata.appmode:", d.get("metadata", {}).get("appmode"))
+              print("manifest metadata.entrypoint:", d.get("metadata", {}).get("entrypoint"))
+              print("manifest python.version:", d.get("python", {}).get("version"))
+              pm = d.get("python", {}).get("package_manager", {})
+              print("manifest package_manager:", pm.get("name"), pm.get("version"), pm.get("package_file"))
+          PY
 
       - name: Publish to Posit Connect
         uses: rstudio/actions/connect-publish@main
