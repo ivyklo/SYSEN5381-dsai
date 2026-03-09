@@ -1,0 +1,47 @@
+name: Deploy FastAPI to Posit Connect
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '05_hackathon/congestion_tracker/api/**'
+      - '.github/workflows/deploy-fastapi.yml'
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Generate manifest.json (FastAPI)
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install rsconnect-python
+          rsconnect write-manifest api --entrypoint fastapi_app:app 05_hackathon/congestion_tracker/api
+
+      - name: Publish to Posit Connect
+        uses: rstudio/actions/connect-publish@main
+        env:
+          # If you add these as GitHub repo secrets, Connect will set them as runtime env vars.
+          CONNECT_ENV_SET_SUPABASE_DB_HOST: ${{ secrets.SUPABASE_DB_HOST }}
+          CONNECT_ENV_SET_SUPABASE_DB_PORT: ${{ secrets.SUPABASE_DB_PORT }}
+          CONNECT_ENV_SET_SUPABASE_DB_NAME: ${{ secrets.SUPABASE_DB_NAME }}
+          CONNECT_ENV_SET_SUPABASE_DB_USER: ${{ secrets.SUPABASE_DB_USER }}
+          CONNECT_ENV_SET_SUPABASE_DB_PASSWORD: ${{ secrets.SUPABASE_DB_PASSWORD }}
+          CONNECT_ENV_SET_OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          CONNECT_ENV_SET_OPENAI_MODEL: ${{ secrets.OPENAI_MODEL }}
+        with:
+          url: ${{ secrets.CONNECT_SERVER }}
+          api-key: ${{ secrets.CONNECT_API_KEY }}
+          access-type: acl
+          dir: 05_hackathon/congestion_tracker/api/:city-congestion-tracker-api
+          force: false
+          show-logs: true
+

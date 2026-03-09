@@ -91,6 +91,10 @@ custom_styles = ui.tags.style(
 header = ui.div(
     ui.tags.h1(APP_TITLE, class_="app-title"),
     ui.tags.p(APP_SUBTITLE, class_="app-subtitle"),
+    ui.tags.p(
+        "Test A includes the last 30 days. Test B includes the last 14 days. Test C includes the last 7 days.",
+        class_="app-subtitle",
+    ),
 )
 
 main_content = ui.div(
