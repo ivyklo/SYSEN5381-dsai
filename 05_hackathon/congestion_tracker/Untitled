@@ -1,3 +1,0 @@
-Supabase
-Create a project, then in SQL Editor run supabase/schema.sql.
-Get DB credentials from Project Settings → Database (use the Connection pooling host/user).

@@ -11,6 +11,50 @@ AI-powered congestion-tracking system: Supabase → REST API → Shiny dashboard
   - **Test C** (`dataset_c`): last **7 days** of 15-minute readings
 - **Content**: Locations (intersection/segment/zone) and readings with `location_id`, `ts`, `congestion_level` (1–4), `delay_minutes`, and `dataset_label`. See [CODEBOOK.md](CODEBOOK.md).
 
+## 🧱 System Architecture (High-Level)
+
+At a high level, the City Congestion Tracker consists of four layers:
+
+1. **Data storage (Supabase PostgreSQL)**
+   - Tables: `locations` and `congestion_readings` (with `dataset_label`).
+   - Populated by `scripts/generate_synthetic_data.py`, which can also load data directly into Supabase using `SUPABASE_DB_*` from `.env`.
+
+2. **Backend API (FastAPI, `api/fastapi_app.py`)**
+   - Connects to Supabase via `psycopg2`.
+   - Exposes REST endpoints for:
+     - `GET /locations` – lookup table for location names/zones.
+     - `GET /readings` – raw readings filtered by `dataset`, date range, locations, and levels.
+     - `GET /summary` – per-location aggregates (count, average, max).
+     - `POST /ai-summary` – uses the same filters to summarize a slice of data via OpenAI Chat Completions.
+   - Reads configuration from environment variables:
+     - `SUPABASE_DB_*` for database access.
+     - `OPENAI_API_KEY` (and optional `OPENAI_MODEL`) for AI summaries.
+
+3. **Dashboard (Shiny for Python, `dashboard/`)**
+   - UI: `dashboard/ui.py` defines the layout:
+     - Date range selector, location checkboxes, and three buttons:
+       - **Refresh Test A data** → `dataset_a` (30 days)
+       - **Refresh Test B data** → `dataset_b` (14 days)
+       - **Refresh Test C data** → `dataset_c` (7 days)
+     - Value box for average congestion, daily average plot, per-location summary table, AI summary text, and readings preview.
+   - Server: `dashboard/server.py`:
+     - Resolves the API base URL from `CONGESTION_API_URL` (falls back to `http://127.0.0.1:8001` for local development).
+     - Calls the FastAPI endpoints with the current dataset + filters.
+     - Keeps the dashboard outputs (value box, plot, tables, AI summary) in sync with the API data.
+   - App entrypoint: `dashboard/app.py`:
+     - Wraps UI + server into a Shiny `App`.
+     - Locally: can be run with `python app.py`.
+     - For hosting platforms (e.g., DigitalOcean), binds to `0.0.0.0:$PORT` using the `PORT` environment variable.
+
+4. **Deployment targets**
+   - **Local development**:
+     - Supabase: hosted project.
+     - API: `uvicorn fastapi_app:app --host 127.0.0.1 --port 8001`.
+     - Dashboard: `python app.py` (default port 8002).
+   - **Cloud (e.g., DigitalOcean, Posit Connect)**:
+     - API and dashboard are deployed as separate services.
+     - The dashboard is configured with `CONGESTION_API_URL` pointing to the deployed API URL (e.g., `https://coral-app-brurb.ondigitalocean.app`), so all data and AI summaries flow through the FastAPI layer.
+
 ## ⚡ Quick Start
 
 1. **Supabase**: Create a project at [supabase.com](https://supabase.com). In SQL Editor, run `supabase/schema.sql`.
@@ -19,6 +63,24 @@ AI-powered congestion-tracking system: Supabase → REST API → Shiny dashboard
 4. **Synthetic data (Python)**: From `scripts/`, run `python generate_synthetic_data.py`. This writes CSVs to `data/` and, if `SUPABASE_DB_*` is set in `.env`, loads them into Supabase.
 5. **API (FastAPI)**: From `api/`, run `uvicorn fastapi_app:app --host 127.0.0.1 --port 8001`. API base: `http://127.0.0.1:8001`.
 6. **Dashboard (Shiny for Python)**: From `dashboard/`, run `python app.py`. This starts the dashboard on `http://127.0.0.1:8002`. Set `CONGESTION_API_URL` in `.env` if the API is not at `http://127.0.0.1:8001`.
+
+## 🧭 App Navigation
+
+- **User inputs (left sidebar)**:
+  - **Date range**: choose the time window for all plots, tables, and AI summaries.
+  - **Locations**: select one or more locations (or keep **All locations**) to filter readings and summaries.
+  - **Test dataset buttons**:
+    - **Refresh Test A data** → loads `dataset_a` (last 30 days).
+    - **Refresh Test B data** → loads `dataset_b` (last 14 days).
+    - **Refresh Test C data** → loads `dataset_c` (last 7 days).
+  - **Get AI summary**: calls the API’s `/ai-summary` endpoint using the currently loaded dataset + filters.
+
+- **Main view (right)**:
+  - **Average congestion value box**: shows the overall average congestion level for the selected date range, locations, and current test dataset.
+  - **Daily average congestion plot**: trends by day and location (using `congestion_level` averages).
+  - **Summary by location table**: location name + average congestion level (rounded to 2 decimals).
+  - **AI summary (OpenAI)**: short narrative describing congestion patterns for the current query.
+  - **Readings (preview)**: a small, scrollable table of raw readings returned by the API.
 
 ## ✨ Features and Technology
 
