@@ -1,0 +1,12 @@
+{
+    "https://connect.systems-apps.com/": {
+        "server_url": "https://connect.systems-apps.com/",
+        "filename": "C:\\Users\\ivyka\\Documents\\Ivy_Grad_School\\SYSEN_5381\\SYSEN5381-dsai\\05_hackathon\\congestion_tracker\\api",
+        "app_url": "https://connect.systems-apps.com/content/f8e41137-1659-4d88-a688-eba703c2d6bf/",
+        "app_id": "131",
+        "app_guid": "f8e41137-1659-4d88-a688-eba703c2d6bf",
+        "title": "api",
+        "app_mode": "python-fastapi",
+        "app_store_version": 1
+    }
+}

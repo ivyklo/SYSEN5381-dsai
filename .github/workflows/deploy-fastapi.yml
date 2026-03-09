@@ -18,7 +18,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.14.2'
+          python-version: '3.12'
 
       - name: Generate manifest.json (FastAPI)
         run: |
@@ -26,7 +26,7 @@ jobs:
           python -m pip install rsconnect-python
           rsconnect write-manifest api --entrypoint fastapi_app:app 05_hackathon/congestion_tracker/api
 
-      - name: Pin manifest Python to 3.14.2
+      - name: Pin manifest Python to 3.12.4
         run: |
           python - <<'PY'
           import json
@@ -35,8 +35,8 @@ jobs:
           if not p.exists():
               raise SystemExit("manifest.json not found after write-manifest")
           d = json.loads(p.read_text(encoding="utf-8"))
-          d.setdefault("python", {}).setdefault("version", "3.14.2")
-          d["python"]["version"] = "3.14.2"
+          d.setdefault("python", {}).setdefault("version", "3.12.4")
+          d["python"]["version"] = "3.12.4"
           p.write_text(json.dumps(d, indent=2) + "\n", encoding="utf-8")
           print("Pinned manifest python.version to", d["python"]["version"])
           print("metadata.appmode:", d.get("metadata", {}).get("appmode"))

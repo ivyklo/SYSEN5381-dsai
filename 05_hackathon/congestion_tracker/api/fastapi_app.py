@@ -159,6 +159,19 @@ app = FastAPI(
 # 3. Endpoints #################################
 
 
+@app.get("/")
+async def root():
+    """
+    Root endpoint (used by some deployment health checks).
+    """
+    return {
+        "service": "City Congestion Tracker API",
+        "status": "ok",
+        "health": "/health",
+        "docs": "/docs",
+    }
+
+
 @app.get("/health")
 async def health():
     """Simple health check endpoint."""
