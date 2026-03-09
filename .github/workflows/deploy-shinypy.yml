@@ -25,8 +25,8 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install rsconnect-python
           rsconnect write-manifest shiny 05_hackathon/congestion_tracker/dashboard
-      
-      - name: Debug: show manifest + directory
+
+      - name: "Debug: show manifest + directory"
         run: |
           python --version
           ls -la 05_hackathon/congestion_tracker/dashboard
