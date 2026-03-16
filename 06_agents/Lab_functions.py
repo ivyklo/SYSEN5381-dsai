@@ -5,7 +5,7 @@
 
 # This script contains functions used for multi-agent orchestration in Python.
 
-# 0. SETUP ###################################
+# 0. SETUP ####################################
 
 ## 0.1 Load Packages #################################
 

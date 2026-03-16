@@ -16,9 +16,9 @@ import pandas as pd  # for data manipulation
 # If you haven't already, install these packages...
 # pip install pandas requests
 
-## 0.2 Load Functions #################################
+## 0.2 Load Functions ##################################
 
-from Lab_functions import get_characters, df_as_text, agent_run
+from lab_functions import get_characters, df_as_text, agent_run
 
 
 # 1. CONFIGURATION ###################################
