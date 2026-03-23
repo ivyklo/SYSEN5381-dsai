@@ -1,12 +1,10 @@
-# 05_embed.py
+# lab_embed_rag.py
 # Semantic RAG with Embeddings (sentence-transformers + SQLite)
-# Pairs with 05_embed.R
-# Tim Fraser
 
-# In this exercise, we're going to look at the first few pages of the Lower Manhattan Recovery Plan after Hurricane Sandy,
-# shown in data/lower_manhattan_recovery_plan.txt.
-# For more details, see: https://doi.org/10.1016/j.jenvman.2025.127089
-# More plans at: https://github.com/timothyfraser/ny_committees/tree/main/text
+
+# In this exercise, we're going to look at the Long Beach NYRCR Plan,
+# shown in data/plans/long_beach_nyrcr_plan.txt.
+
 
 # We're going to use semantic search RAG to answer questions about the plan.
 # Why use semantic search RAG rather than 'naive' RAG (basic keyword search)?
